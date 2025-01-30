@@ -1,6 +1,6 @@
 # Projeto-Conceitual-E-COMMERCE
 
-#Entidades:
+Entidades:
 Cliente:
 idCliente (PK)
 
