@@ -43,5 +43,6 @@ Pedido 1:N Entrega
 ##########################################################################################################################################
 
 
-aqui esá um esquema de banco de dados conceitual
+Aqui esá um esquema de banco de dados conceitual vou deixar o arquivo para ver como ficou. 
+
 
