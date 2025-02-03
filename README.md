@@ -1,4 +1,4 @@
-# Projeto-Conceitual-E-COMMERCE
+# Projeto-Conceitual de banco de dados
 
 Entidades:
 Cliente:
