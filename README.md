@@ -100,13 +100,7 @@ idEquipe (PK)
 
 nomeEquipe
 
-Servico:
 
-idServico (PK)
-
-descricao
-
-valorMaoDeObra
 
 Peca:
 
@@ -119,7 +113,7 @@ valor
 Relacionamentos:
 Cliente 1:N Veiculo
 
-Veiculo 1:N OrdemServico
+Cliente 1:N OrdemServico
 
 Equipe 1:N OrdemServico
 
