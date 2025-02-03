@@ -1,5 +1,6 @@
 # Projeto-Conceitual de banco de dados
 
+Banco de dados E-COMMERCE
 Entidades:
 Cliente:
 idCliente (PK)
@@ -44,6 +45,8 @@ Pedido 1:N Entrega
 
 
 Aqui esá um esquema de banco de dados conceitual vou deixar o arquivo para ver como ficou. 
+
+Banco de dados Sistema de Oficina Mecânica
 
 Entidades:
 Cliente:
