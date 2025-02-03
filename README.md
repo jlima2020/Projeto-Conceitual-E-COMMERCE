@@ -122,6 +122,4 @@ Equipe 1:N OrdemServico
 
 Equipe N:M Mecanico (Relacionamento EquipeMecanico)
 
-OrdemServico N:M Servico (Relacionamento OrdemServicoServico)
-
 OrdemServico N:M Peca (Relacionamento OrdemServicoPeca)
