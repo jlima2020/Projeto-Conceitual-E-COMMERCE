@@ -63,3 +63,13 @@ CREATE TABLE OrdemServicoPeca (
     PRIMARY KEY (idOS, idPeca)
 );
 
+##############################################################################################
+
+consultar o banco de dados 
+
+SELECT OS.idOS, OS.dataEmissao, OS.valor, OS.status, OS.dataConclusao, V.placa, V.modelo, E.nomeEquipe
+FROM OrdemServico OS
+JOIN Veiculo V ON OS.idVeiculo = V.idVeiculo
+JOIN Equipe E ON OS.idEquipe = E.idEquipe
+WHERE V.idCliente = 1;
+
