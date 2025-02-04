@@ -1,0 +1,37 @@
+-- Criação da tabela Cliente
+CREATE TABLE Cliente (
+    idCliente SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(2) CHECK (tipo IN ('PJ', 'PF')) NOT NULL
+);
+
+-- Criação da tabela Pagamento
+CREATE TABLE Pagamento (
+    idPagamento SERIAL PRIMARY KEY,
+    formaPagamento VARCHAR(50) NOT NULL,
+    detalhesPagamento TEXT,
+    idCliente INT,
+    FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente) ON DELETE CASCADE
+);
+
+-- Criação da tabela Pedido
+CREATE TABLE Pedido (
+    idPedido SERIAL PRIMARY KEY,
+    dataPedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    idCliente INT,
+    FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente) ON DELETE CASCADE
+);
+
+-- Criação da tabela Entrega
+CREATE TABLE Entrega (
+    idEntrega SERIAL PRIMARY KEY,
+    status VARCHAR(50) NOT NULL,
+    codigoRastreio VARCHAR(100),
+    idPedido INT,
+    FOREIGN KEY (idPedido) REFERENCES Pedido(idPedido) ON DELETE CASCADE
+);
+
+
+#################################################################################################################
+
+Para interação com banco de dados EER
