@@ -1,0 +1,65 @@
+-- Criação das tabelas
+
+-- Tabela Cliente
+CREATE TABLE Cliente (
+    idCliente SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    endereco VARCHAR(200),
+    telefone VARCHAR(20)
+);
+
+-- Tabela Veiculo
+CREATE TABLE Veiculo (
+    idVeiculo SERIAL PRIMARY KEY,
+    placa VARCHAR(10) NOT NULL,
+    modelo VARCHAR(50),
+    ano INT CHECK (ano >= 1900 AND ano <= EXTRACT(YEAR FROM CURRENT_DATE)),
+    idCliente INT REFERENCES Cliente(idCliente) ON DELETE CASCADE
+);
+
+-- Tabela Mecanico
+CREATE TABLE Mecanico (
+    idMecanico SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    endereco VARCHAR(200),
+    especialidade VARCHAR(50)
+);
+
+-- Tabela Equipe
+CREATE TABLE Equipe (
+    idEquipe SERIAL PRIMARY KEY,
+    nomeEquipe VARCHAR(100) NOT NULL
+);
+
+-- Tabela OrdemServico
+CREATE TABLE OrdemServico (
+    idOS SERIAL PRIMARY KEY,
+    dataEmissao DATE NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    dataConclusao DATE,
+    idVeiculo INT REFERENCES Veiculo(idVeiculo) ON DELETE CASCADE,
+    idEquipe INT REFERENCES Equipe(idEquipe) ON DELETE CASCADE
+);
+
+-- Tabela Peca
+CREATE TABLE Peca (
+    idPeca SERIAL PRIMARY KEY,
+    descricao VARCHAR(200),
+    valor DECIMAL(10, 2) NOT NULL
+);
+
+-- Tabela de relacionamento N:M entre Equipe e Mecanico (EquipeMecanico)
+CREATE TABLE EquipeMecanico (
+    idEquipe INT REFERENCES Equipe(idEquipe) ON DELETE CASCADE,
+    idMecanico INT REFERENCES Mecanico(idMecanico) ON DELETE CASCADE,
+    PRIMARY KEY (idEquipe, idMecanico)
+);
+
+-- Tabela de relacionamento N:M entre OrdemServico e Peca (OrdemServicoPeca)
+CREATE TABLE OrdemServicoPeca (
+    idOS INT REFERENCES OrdemServico(idOS) ON DELETE CASCADE,
+    idPeca INT REFERENCES Peca(idPeca) ON DELETE CASCADE,
+    PRIMARY KEY (idOS, idPeca)
+);
+
